@@ -7,7 +7,7 @@ with open('Exam1.csv') as csvfile:
 	dataInArray = []
 	spamreader = csv.reader(csvfile, delimiter=' ', quotechar='|')
 	# print(spamreader)
-	next(spamreader, None)
+	next(spamreader, None)  #Skip header (name, salary)
 	for row in spamreader:
 		
 		s = row[0].split(',')
