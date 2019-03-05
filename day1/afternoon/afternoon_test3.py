@@ -1,31 +1,34 @@
-products={
-        "001": "PC",
-        "002": "Notebook",
-        "003": "Mouse",
+products = {
+	"000": "Keyboard",
+	"001": "PC",
+	"002": "Notebook",
+	"003": "Mouse",
 }
-
-product = ["Keyboard", "PC", "Notebook", "Mouse"]
 
 shops = {
-        "shop1": {3: 500, 0: 100},
-        "shop2": {2: 30, 1: 20},
-        "shop3": {1: 55, 3: 44},
-        "shop4": {1: 50, 3: 60},
-        "shop5": {3: 500, 0: 100},
+	"shop1": {"003": 500, "000": 100},
+	"shop2": {"002": 30, "001": 20},
+	"shop3": {55: "001", 44: "003"},
+	"shop4": {50: "001", 60: "003"},
+	"shop5": {"002": 800, "001": 300},
 }
 
+def printout(data):
+		loopin_round = 1
+		for key_main, value in data.items():
+			for subkey, subvalue in value.items():		
+				if loopin_round%2 != 0:
+					if isinstance(subkey, str):
+						string1 = "{} has {} {} PCE and ".format(key_main, products[subkey], value[subkey])
+					else:
+						string1 = "{} has {} {} PCE and ".format(key_main, products[subvalue], value[subkey])
+					loopin_round = loopin_round + 1
+				else:
+					if isinstance(subkey, str):
+						string2 = "{} {} PCE".format(products[subkey], value[subkey])
+					else:
+						string2 = "{} {} PCE".format(products[subvalue], value[subkey])
+			loopin_round = 1
+			print("" + string1 + string2)
 
-f = 1
-for keyMain, value in shops.items():
-	for key, value in value.items():
-		if f%2 != 0:
-			valueIndex = key
-			# print("{} has {} {} PCE and ".format(keyMain, product[valueIndex], value))
-			string1 = "{} has {} {} PCE and ".format(keyMain, product[valueIndex], value)
-		else:
-			valueIndex = key
-			# print("{} {} PCE".format(product[valueIndex], value))	
-			string2 = "{} {} PCE".format(product[valueIndex], value)
-		f = f + 1
-	print("" + string1 + string2)
-
+printout(shops)		
