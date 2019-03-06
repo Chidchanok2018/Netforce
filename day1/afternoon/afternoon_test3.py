@@ -15,20 +15,21 @@ shops = {
 
 def printout(data):
 		loopin_round = 1
-		for key_main, value in data.items():
-			for subkey, subvalue in value.items():		
+		for key_main, value in sorted(data.items()):
+			for subkey, subvalue in value.items():
 				if loopin_round%2 != 0:
 					if isinstance(subkey, str):
-						string1 = "{} has {} {} PCE and ".format(key_main, products[subkey], value[subkey])
+						string1 = "{} has {} {} PCE and ".format(key_main, products[subkey], subvalue)
 					else:
-						string1 = "{} has {} {} PCE and ".format(key_main, products[subvalue], value[subkey])
+						string1 = "{} has {} {} PCE and ".format(key_main, products[subvalue], subkey)
 					loopin_round = loopin_round + 1
 				else:
 					if isinstance(subkey, str):
-						string2 = "{} {} PCE".format(products[subkey], value[subkey])
+						string2 = "{} {} PCE".format(products[subkey], subvalue)
 					else:
-						string2 = "{} {} PCE".format(products[subvalue], value[subkey])
+						string2 = "{} {} PCE".format(products[subvalue], subkey)
 			loopin_round = 1
 			print("" + string1 + string2)
 
-printout(shops)		
+printout(shops)
+

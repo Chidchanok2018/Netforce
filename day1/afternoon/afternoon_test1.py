@@ -1,13 +1,13 @@
-nbrs =  (1,2,(3,4,5,(6,7),8),9,10)
+nbrs = (1, 2, (3, 4, 5, (6, 7), 8), 9, 10)
 
-for i in nbrs:
-	if isinstance(i, int):
-		print(i)
+def check(data):
+	if isinstance(data, int):
+		print(data)
 	else:
-		for j in i:
-			if isinstance(j, int):
-				print(j)
+		for i in data:
+			if isinstance(i, int):
+				print(i)
 			else:
-				for k in j:
-					print(k)
+				check(i)
 
+check(nbrs)

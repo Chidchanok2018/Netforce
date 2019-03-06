@@ -82,6 +82,16 @@ with open('test.csv') as csvfile:
 		print(df['count'].groupby([df['name']]).sum())
 		# from Stackoverflow
 		
+        def query_first_char_new(data):
+            group = {}
+            for key,val in data.items():
+                key_g = key[0]
+                group.setdefault(key_g,0)
+                group[key_g] += val
+
+            for key, value in group.items():
+                print("{} : {}".format(key, value))
+
 	# Main function
 	print('')
 	print('Highest Salary')
@@ -101,3 +111,6 @@ with open('test.csv') as csvfile:
 	print('')
 	print('Group and Order Data By Name')
 	query_first_char(dataInArray)
+        print('')
+        print('Group and Order Data By Name with setdefault method in Dict Data Structure')
+        query_first_char_new(data)
